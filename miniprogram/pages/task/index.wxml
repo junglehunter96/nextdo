@@ -1,0 +1,26 @@
+<!--miniprogram/pages/task/index.wxml-->
+<view class='main-container'>
+  <view class='main-header van-hairline--top-bottom'>
+    <task-header />
+  </view>
+  <view class="task-container">
+    <view class="task-item task-a">
+      <task-a taskitem="{{task_A}}"></task-a>
+    </view>
+    <view class="task-item task-b">
+
+    </view>
+    <view class='task-item task-c'>
+    </view>
+    <view class='task-item task-d'>
+
+    </view>
+    <view class='add-button' bindtap='addTask'>
+      <image src='../../images/task/add.png' class='addImg' />
+    </view>
+  </view>
+  <van-popup show="{{ showTaskAdd }}" bind:close="onClose" position="bottom">
+    <task-form wx:if="{{showTaskAdd}}" bind:cancel="cancelTask" bind:ensure="ensureTask"/>
+  </van-popup>
+  <van-toast id="van-toast" />
+</view>

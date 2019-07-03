@@ -1,0 +1,43 @@
+/* miniprogram/pages/task/index.wxss */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  height:100vh;
+}
+.add-button{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width:50rpx;
+  height:50rpx;
+  font-size:50rpx;
+  line-height: 50rpx;
+}
+.addImg {
+  width: 48rpx;
+  height: 48rpx;
+}
+.task-container {
+  position: relative;
+  flex:1;
+  display: flex;
+  flex-wrap: wrap;
+}
+.task-item {
+  display: inline-block;
+  width:50%;
+  height: 50%;
+}
+.task-a {
+  background: #b6e0fd
+}
+.task-b {
+  background: #feb3b3
+}
+.task-c {
+  background:#dfdfdf
+}
+.task-d {
+  background: #c0efc3
+}

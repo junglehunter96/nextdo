@@ -1,0 +1,25 @@
+/* components/task-form/index.wxss */
+@import "../../miniprogram_npm/vant-weapp/common/index.wxss";
+.form-container {
+  height:50vh;
+}
+.radio-group {
+  padding:25rpx;
+  display: flex;
+  justify-content: center;
+  font-size:16rpx;
+}
+.radio {
+  width:25%
+}
+.time-picker{
+  margin: 0 50rpx 50rpx;
+}
+.input-task{
+  padding-left:25rpx;
+}
+.task-button {
+  padding: 0 20rpx 0;
+  display: flex;
+  justify-content: space-between;
+}

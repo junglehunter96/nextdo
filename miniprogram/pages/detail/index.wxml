@@ -1,0 +1,32 @@
+<view class="container">
+  <image src="/images/my/my@bg.png" class="bg"></image>
+  <!-- <open-data type="userAvatarUrl" class="avatar avatar-position"/> -->
+  <v-button wx:if="{{!authorized}}" open-type="getUserInfo" class="avatar-position" bind:getuserinfo="onGetUserInfo">
+    <image slot="img" class="avatar" src="/images/my/my.png" />
+  </v-button>
+  <!-- 登录 难点 服务器 微信支付 -->
+  <view wx:if="{{authorized}}" class="avatar-container avatar-position">
+    <image src="{{userInfo.avatarUrl}}" class="avatar" />
+    <text>{{userInfo.nickName}}</text>
+  </view>
+  <view class="about-container">
+    <view bind:tap="onJumpToAbout" class="about-us">
+      <image src="/images/my/about.png" />
+      <text class="description">关于</text>
+    </view>
+    <view class="about-us">
+      <image src="/images/my/contact.png" />
+      <text class="description">联系</text>
+    </view>
+  </view>
+  <view class='one holder'>
+    <view class='bubble bubble-bottom'>
+      <text class='one-message'>{{oneMessage.hitokoto}}</text>
+    </view>
+    <view class='one-from'>
+    <span class='line'></span>
+    <text class='from-text'>{{oneMessage.from}}</text>
+    <span class='line'></span>
+    </view>
+  </view>
+</view>

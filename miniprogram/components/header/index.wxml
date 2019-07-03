@@ -1,0 +1,17 @@
+<!--components/episode/index.wxml-->
+<view class="container van-hairline--bottom">
+  <view class="index-container">
+    <text class="index">{{day}}</text>
+    <view class="line"></view>
+    <view class="date-container">
+      <text class="month">{{month}}</text>
+      <text class="year">{{year}}</text>
+    </view>
+  </view>
+  <view class="city-container" wx:if="{{temp}}">
+    <text class="city-text">{{city}}</text>
+    <text class="city-text">{{weather}}</text>
+    <text class="city-text">{{temp}}°C</text>
+  </view>
+</view>
+
