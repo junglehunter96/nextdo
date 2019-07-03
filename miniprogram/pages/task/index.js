@@ -1,63 +1,72 @@
 // miniprogram/pages/task/index.js
-import promisic from '../../utils/promisic.js';
-import Toast from '../../miniprogram_npm/vant-weapp/toast/toast';
+import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
 
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    showTaskAdd:false,
-    task_A: null,
-    task_B: null,
-    task_C: null,
-    task_D: null,
+    showTaskAdd: false,
+    task_A: [],
+    task_B: [],
+    task_C: [],
+    task_D: [],
   },
-  addTask(){
-    const user = wx.getStorageSync('userName');
+  addTask() {
+    const user = wx.getStorageSync('userName')
     //验证用户登录
-    if(user) {
+    if (user) {
       this.onOpen()
-    }else {
-      Toast('请先登录哟,亲~');
+    } else {
+      Toast('请先登录哟,亲~')
     }
   },
-  cancelTask(){
+  cancelTask() {
     this.onClose()
   },
-  ensureTask(e){
-    const detail = e.detail;
-    console.log(detail);
-    const type = e.detail.type;
-    console.log(type)
-    switch(type){
-      case "a":
-      this.setData({
-        task_A: detail
-      });
-      break;
-      case "b":
+  ensureTask(e) {
+    let detail = e.detail;
+    let taskText = detail.taskText;
+    let day = detail.day;
+    let hours = detail.timeArray[1];
+    hours = hours>9?hours:'0'+hours;
+    let minute = detail.timeArray[2];
+    minute = minute>9?minute:'0'+minute;
+    let timeArray=[detail.timeArray[1],detail.timeArray[2]];
+    let taskItem = {
+      taskText,day,hours,minute,timeArray
+    }
+    let taskArr = [taskItem];
+    console.log(taskArr)
+    const type = e.detail.type
+    switch (type) {
+      case 'a':
         this.setData({
-          task_B: detail
-        });
-      break;
-      case "c":
+          task_A: taskArr.concat(this.data.task_A)
+        })
+        break
+      case 'b':
         this.setData({
-          task_C: detail
-        });
-      case "d":
+          task_B: taskArr.concat(this.data.task_B)
+        })
+        break
+      case 'c':
         this.setData({
-          task_D: detail
-        });
-      break;
+          task_C: taskArr.concat(this.data.task_C)
+        })
+      case 'd':
+        this.setData({
+          task_D: taskArr.concat(this.data.task_D)
+        })
+        break
     }
     this.onClose()
   },
   onOpen() {
-    this.setData({ showTaskAdd: true });
+    this.setData({ showTaskAdd: true })
   },
   onClose() {
-    this.setData({ showTaskAdd: false });
+    this.setData({ showTaskAdd: false })
   },
   /**
    * 生命周期函数--监听页面加载

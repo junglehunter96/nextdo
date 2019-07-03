@@ -42,3 +42,8 @@
   text-overflow:ellipsis;
   white-space: nowrap;
 }
+.warning {
+  margin-right:5rpx; 
+  font-size:18rpx;
+  color:red;
+}

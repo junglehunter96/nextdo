@@ -1,4 +1,4 @@
-<!--components/task/task-a/index.wxml-->
+<!-- components/task/task-a/index.wxml -->
 <view class="task-container">
   <view class="task-header">
     <span class="star-group">
@@ -8,9 +8,11 @@
     <text>紧急&不重要</text>
   </view>
   <scroll-view>
-    <view wx:if="{{taskArray1?true:false}}" class="item" wx:for="{item,index} in taskArray1" wx:key="index">
-      <view class="task-text">{{item.task}}</view>
-      <text class="time">{{item.fin-day}} {{item.time}}</text>
+    <view class="item" wx:for="{{taskArray}}" wx:key="index">
+      <view class="task-text">{{item.taskText}}</view>
+        <text class="time">
+          {{days[item.day-day]}} {{item.hours}}:{{item.minute}}
+        </text>
     </view>
   </scroll-view>
 </view>

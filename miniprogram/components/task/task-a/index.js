@@ -4,28 +4,25 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    taskitem:null,
-    taskArray:[] ,
+    taskArray: null
   },
-  attached: function () {
-    
+  attached: function() {
+
   },
   /**
    * 组件的初始数据
    */
   data: {
-
+    days:['今天','明天','后天'],
+    day:new Date().getDate(),
+    hours:new Date().getHours(),
+    minute:new Date().getMinutes()
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    // getTaskArray(){
-    //   let taskArray = wx.getStorageSync("taskArray");
-    //   this.setData({
-    //     taskArray,
-    //   })
-    // }
+
   }
 })

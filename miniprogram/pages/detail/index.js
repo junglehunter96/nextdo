@@ -1,5 +1,6 @@
 import promisic from '../../utils/promisic.js'
-const appInstance = getApp();
+const appInstance = getApp()
+
 Page({
   /**
    * 页面的初始数据
@@ -7,37 +8,41 @@ Page({
   data: {
     authorized: false,
     userInfo: null,
-    oneMessage:null,
+    oneMessage: null
   },
 
   onShow(options) {
     this.userAuthorized1()
     this.getOneMessage()
+    this.getUserInfo()
+  },
+  
+  getUserInfo(){
     wx.getUserInfo({
-      success:data=>{
+      success: data => {
         //获取用户登录信息
-        if(appInstance.globalData.userInfo) {
-          appInstance.globalData.userInfo = data;
-          wx.setStorageSync("userName", data.userInfo.nickName);
+        if (!appInstance.globalData.userInfo.username) {
+          appInstance.globalData.userInfo = data
+          wx.setStorageSync('userName', data.userInfo.nickName)
         }
       }
     })
   },
   //获取一言
-  getOneMessage(){
+  getOneMessage() {
     wx.request({
       url: 'https://v1.hitokoto.cn/',
-      header: {'content-type':'application/json'},
+      header: { 'content-type': 'application/json' },
       method: 'GET',
       dataType: 'json',
-      success: (result) => {
+      success: result => {
         this.setData({
           oneMessage: result.data
         })
       },
       fail: () => {},
       complete: () => {}
-    });   
+    })
   },
   userAuthorized1() {
     promisic(wx.getSetting)()

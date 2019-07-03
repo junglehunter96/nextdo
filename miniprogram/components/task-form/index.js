@@ -32,7 +32,7 @@ Component({
     ],
       date: new Date().getDate(),
       days: ['今天','明天','后天'],
-      day:'今天',
+      day:0,
       hours: hours,
       hour:1,
       minutes: minutes,
@@ -52,7 +52,6 @@ Component({
     },
     bindChange(e) {
       const val = e.detail.value
-      console.log(val)
       this.setData({
         val,
         day: this.data.days[val[0]],
@@ -70,13 +69,24 @@ Component({
       this.triggerEvent("cancel")
     },
     ensure(){
+      let today = new Date().getDate();
+      let dayif = this.data.val[0];
+      let day = null;
+      if(0 === dayif) {
+        day = today
+      }else if(1 === dayif) {
+        day = today + 1
+      }else {
+        day = today + 2
+      }
       let taskLi = {
+        day,
         type: this.data.taskType,
         timeArray: this.data.val,
-        taskText:this.data.taskText,
-        date:this.data.date
+        taskText:this.data.taskText
       }
-      if(taskLi.type&&taskLi.timeArray&&taskLi.taskText&&taskLi.date){
+      
+      if(taskLi.type&&taskLi.timeArray&&taskLi.taskText&&taskLi.day){
         this.triggerEvent("ensure", taskLi)
       }else{
         Toast('请正确输入哟,亲~');

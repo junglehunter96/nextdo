@@ -5,7 +5,7 @@
   </view>
   <view class="task-container">
     <view class="task-item task-a">
-      <task-a taskitem="{{task_A}}"></task-a>
+      <task-a taskArray="{{task_A}}"></task-a>
     </view>
     <view class="task-item task-b">
 
