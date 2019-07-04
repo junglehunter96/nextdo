@@ -1,0 +1,9 @@
+/* components/task/task-b/index.wxss */
+@import '../task-common.wxss';
+
+.task-header {
+  background:#fe2222
+}
+.item {
+  background: #fe5d5d
+}

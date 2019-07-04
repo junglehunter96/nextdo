@@ -1,14 +1,15 @@
-<!-- components/task/task-a/index.wxml -->
+<!--components/task/task-b/index.wxml-->
 <view class="task-container">
   <view class="task-header">
     <span class="star-group">
       <van-icon name="star" color="yellow" />
       <van-icon name="star" color="yellow" />
+      <van-icon name="star" color="yellow" />
     </span>
-    <text>紧急&不重要</text>
+    <text>紧急&重要</text>
   </view>
   <scroll-view>
-    <view class="item" wx:for="{{taskArray}}" wx:key="{{index}}" data-index="{{index}}" bindlongpress="remoteItemA">
+    <view class="item" wx:for="{{taskArray}}" wx:key="{{index}}" data-index="{{index}}" bindlongpress="remoteItemB">
       <view class="task-text">{{item.taskText}}</view>
       <view class="time" wx:if="{{timer < item.timer}}">
         {{days[item.day - day]}}{{item.hours}}:{{item.minute}}

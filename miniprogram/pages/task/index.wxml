@@ -5,22 +5,24 @@
   </view>
   <view class="task-container">
     <view class="task-item task-a">
-      <task-a taskArray="{{task_A}}"></task-a>
+      <task-a taskArray="{{task_A}}" bind:remoteTaskA="remoteItemA"></task-a>
     </view>
     <view class="task-item task-b">
-
+      <task-b taskArray="{{task_B}}" bind:remoteTaskB="remoteItemB"></task-b>
     </view>
     <view class='task-item task-c'>
+      <task-c taskArray="{{task_C}}" bind:remoteTaskC="remoteItemC"></task-c>
     </view>
     <view class='task-item task-d'>
-
+      <task-d taskArray="{{task_D}}" bind:remoteTaskD="remoteItemD"></task-d>
     </view>
     <view class='add-button' bindtap='addTask'>
-      <image src='../../images/task/add.png' class='addImg' />
+      <image src='../../images/task/add2.png' class='addImg' />
     </view>
   </view>
   <van-popup show="{{ showTaskAdd }}" bind:close="onClose" position="bottom">
     <task-form wx:if="{{showTaskAdd}}" bind:cancel="cancelTask" bind:ensure="ensureTask"/>
   </van-popup>
   <van-toast id="van-toast" />
+  <van-dialog id="van-dialog" />
 </view>

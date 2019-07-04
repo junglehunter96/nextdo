@@ -22,13 +22,13 @@ Component({
    * 组件的初始数据
    */
   data: {
-    taskType:'a',
+    taskType:'b',
     taskText:'',
     taskItems: [
-      { name: 'b', value: '重要紧急', checked: 'true'},
-      { name: 'd', value: '重要不紧急'},
       { name: 'a', value: '紧急不重要'},
+      { name: 'b', value: '重要紧急', checked: 'true'},
       { name: 'c', value: '不紧急不重要'},
+      { name: 'd', value: '重要不紧急'},
     ],
       date: new Date().getDate(),
       days: ['今天','明天','后天'],
