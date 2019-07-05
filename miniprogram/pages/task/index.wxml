@@ -1,28 +1,32 @@
-<!--miniprogram/pages/task/index.wxml-->
+<!-- miniprogram/pages/task/index.wxml -->
 <view class='main-container'>
   <view class='main-header van-hairline--top-bottom'>
     <task-header />
   </view>
   <view class="task-container">
     <view class="task-item task-a">
-      <task-a taskArray="{{task_A}}" bind:remoteTaskA="remoteItemA"></task-a>
+      <task-a taskArray="{{task_A}}" bind:remoteTaskA="remoteItemA" bind:opTask="opTask"></task-a>
     </view>
     <view class="task-item task-b">
-      <task-b taskArray="{{task_B}}" bind:remoteTaskB="remoteItemB"></task-b>
+      <task-b taskArray="{{task_B}}" bind:remoteTaskB="remoteItemB" bind:opTask="opTask"></task-b>
     </view>
     <view class='task-item task-c'>
-      <task-c taskArray="{{task_C}}" bind:remoteTaskC="remoteItemC"></task-c>
+      <task-c taskArray="{{task_C}}" bind:remoteTaskC="remoteItemC" bind:opTask="opTask"></task-c>
     </view>
     <view class='task-item task-d'>
-      <task-d taskArray="{{task_D}}" bind:remoteTaskD="remoteItemD"></task-d>
+      <task-d taskArray="{{task_D}}" bind:remoteTaskD="remoteItemD" bind:opTask="opTask"></task-d>
     </view>
     <view class='add-button' bindtap='addTask'>
       <image src='../../images/task/add2.png' class='addImg' />
     </view>
   </view>
-  <van-popup show="{{ showTaskAdd }}" bind:close="onClose" position="bottom">
-    <task-form wx:if="{{showTaskAdd}}" bind:cancel="cancelTask" bind:ensure="ensureTask"/>
-  </van-popup>
+  <view class="popup">
+    <van-popup show="{{ showTaskAdd }}" bind:close="onClose" position="bottom">
+      <task-form wx:if="{{showTaskAdd}}" bind:cancel="cancelTask" bind:ensure="ensureTask" />
+    </van-popup>
+  </view>
   <van-toast id="van-toast" />
   <van-dialog id="van-dialog" />
+  <van-action-sheet show="{{ TaskSelectshow }}" actions="{{ taskActions }}" cancel-text="取消" bind:select="onTaskSelect" bind:close="onSelectClose" bind:cancel="onSelectCancel" />
+  <van-action-sheet show="{{ finTaskSelectshow }}" actions="{{ finTaskActions }}" cancel-text="取消" bind:select="onfinTaskSelect" bind:close="onFinSelectClose" bind:cancel="onFinSelectCancel" />
 </view>

@@ -14,7 +14,8 @@
       <image src="/images/my/about.png" />
       <text class="description">关于</text>
     </view>
-    <view class="about-us">
+    <!-- about -->
+    <view bind:tap="onJumpToAbout" class="about-us">
       <image src="/images/my/contact.png" />
       <text class="description">联系</text>
     </view>

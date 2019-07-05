@@ -8,10 +8,23 @@ Page({
    */
   data: {
     showTaskAdd: false,
+    TaskSelectshow: false,
+    finTaskSelectshow: false,
     task_A: [],
     task_B: [],
     task_C: [],
-    task_D: []
+    task_D: [],
+    taskActions: [
+      {
+        name: '标记已完成'
+      }
+    ],
+    finTaskActions: [
+      {
+        name: '取消已完成'
+      }
+    ],
+    chooseTask: null
   },
   addTask() {
     const user = wx.getStorageSync('userName')
@@ -33,12 +46,14 @@ Page({
     hours = hours > 9 ? hours : '0' + hours
     let minute = detail.timeArray[2]
     minute = minute > 9 ? minute : '0' + minute
+    let finState = false
     let timer = detail.timeArray[1] * 60 + detail.timeArray[2] + day * 3600
     let taskItem = {
       taskText,
       day,
       hours,
       minute,
+      finState,
       timer
     }
     let taskArr = [taskItem]
@@ -75,6 +90,116 @@ Page({
     }
     this.onClose()
   },
+  //任务标记和修改
+  //关闭任务窗口
+  onSelectClose() {
+    this.setData({
+      TaskSelectshow: false
+    })
+  },
+  onFinSelectClose() {
+    this.setData({
+      finTaskSelectshow: false
+    })
+  },
+  //标记已完成任务
+  onTaskSelect(e) {
+    if (e.detail.name === '标记已完成') {
+      const index = this.data.chooseTask.index
+      const type = this.data.chooseTask.type
+      switch (type) {
+        case 'a':
+          let finStateA = `task_A[${index}].finState`
+          this.setData({
+            [finStateA]: true
+          })
+          break
+        case 'b':
+          let finStateB = `task_B[${index}].finState`
+          this.setData({
+            [finStateB]: true
+          })
+          break
+        case 'c':
+          let finStateC = `task_C[${index}].finState`
+          this.setData({
+            [finStateC]: true
+          })
+          break
+        case 'd':
+          let finStateD = `task_D[${index}].finState`
+          this.setData({
+            [finStateD]: true
+          })
+          break
+      }
+    }
+    this.onSelectClose()
+    this.setData({
+      chooseTask: null
+    })
+  },
+  //取消标记已完成
+  onfinTaskSelect(e) {
+    if (e.detail.name === '取消已完成') {
+      const index = this.data.chooseTask.index
+      const type = this.data.chooseTask.type
+      switch (type) {
+        case 'a':
+          let finStateA = `task_A[${index}].finState`
+          this.setData({
+            [finStateA]: false
+          })
+          break
+        case 'd':
+          let finStateD = `task_D[${index}].finState`
+          this.setData({
+            [finStateD]: false
+          })
+          break
+        case 'b':
+          let finStateB = `task_B[${index}].finState`
+          this.setData({
+            [finStateB]: false
+          })
+          break
+        case 'c':
+          let finStateC = `task_C[${index}].finState`
+          this.setData({
+            [finStateC]: false
+          })
+          break
+      }
+    }
+    this.onFinSelectClose()
+    this.setData({
+      chooseTask: null
+    })
+  },
+  //取消弹窗任务
+  onSelectCancel() {
+    this.onSelectClose()
+  },
+  onFinSelectCancel() {
+    this.onFinSelectClose()
+  },
+  //任务触发器
+  opTask(e) {
+    let chooseTask = e.detail
+    if (chooseTask.state === false) {
+      this.setData({
+        chooseTask,
+        TaskSelectshow: true
+      })
+    } else {
+      this.setData({
+        chooseTask,
+        finTaskSelectshow: true
+      })
+    }
+  },
+  //修改任务
+  modifyTask() {},
   onOpen() {
     this.setData({ showTaskAdd: true })
   },
@@ -132,18 +257,16 @@ Page({
 
   remoteItemA(e) {
     let index = e.detail
-    console.log(index)
+
     Dialog.confirm({
       message: '你确定移除当前项吗'
     })
       .then(() => {
         // on confirm
-        console.log('进入回调了')
         let task_A = this.data.task_A
-        task_A.splice(index,1)
-        console.log(task_A)
+        task_A.splice(index, 1)
         this.setData({
-          task_A:task_A
+          task_A: task_A
         })
       })
       .catch(() => {
@@ -157,7 +280,8 @@ Page({
     })
       .then(() => {
         // on confirm
-        let task_B = this.data.Task_B.splice(index, 1)
+        let task_B = this.data.task_B
+        task_B.splice(index, 1)
         this.setData({
           task_B
         })
@@ -173,7 +297,8 @@ Page({
     })
       .then(() => {
         // on confirm
-        let task_C = this.data.Task_C.splice(index, 1)
+        let task_C = this.data.task_C
+        task_C.splice(index, 1)
         this.setData({
           task_C
         })
@@ -189,7 +314,8 @@ Page({
     })
       .then(() => {
         // on confirm
-        let task_D = this.data.Task_D.splice(index, 1)
+        let task_D = this.data.task_D
+        task_D.splice(index, 1)
         this.setData({
           task_D
         })
@@ -231,7 +357,6 @@ Page({
     }
   },
   setTask_A() {
-    console.log('setTask_A')
     let task_A = this.data.task_A
     if (task_A) {
       try {

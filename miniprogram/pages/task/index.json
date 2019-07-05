@@ -8,6 +8,7 @@
     "task-form": "/components/task-form/index",
     "van-popup": "../../miniprogram_npm/vant-weapp/popup/index",
     "van-toast": "../../miniprogram_npm/vant-weapp/toast/index",
-    "van-dialog": "../../miniprogram_npm/vant-weapp/dialog/index"
+    "van-dialog": "../../miniprogram_npm/vant-weapp/dialog/index",
+    "van-action-sheet": "../../miniprogram_npm/vant-weapp/action-sheet/index"
   }
 }

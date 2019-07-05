@@ -8,9 +8,14 @@ Page({
   data: {
     authorized: false,
     userInfo: null,
-    oneMessage: null
+    oneMessage: null,
+    aboutShow:false
   },
-
+  onAboutClose(){
+    this.setData({
+      aboutShow:false
+    })
+  },
   onShow(options) {
     this.userAuthorized1()
     this.getOneMessage()
@@ -89,14 +94,12 @@ Page({
   },
 
   onJumpToAbout(event) {
-    wx.navigateTo({
-      url: '/pages/about/about'
+    this.setData({
+      aboutShow:true
     })
   },
 
   onStudy(event) {
-    wx.navigateTo({
-      url: '/pages/course/course'
-    })
+    
   }
 })

@@ -25,6 +25,15 @@ Component({
     remoteItemB(e){
       let index = e.currentTarget.dataset.index;
       this.triggerEvent('remoteTaskB', index)
+    },
+    opTask(e){
+      const index = e.currentTarget.dataset.index;
+      const state = e.currentTarget.dataset.state;
+      const type = 'b';
+      const target = {
+        index,type,state
+      }
+      this.triggerEvent('opTask',target)
     }
   }
 })
