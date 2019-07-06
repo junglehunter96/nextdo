@@ -2,6 +2,7 @@
 @import "../../miniprogram_npm/vant-weapp/common/index.wxss";
 .form-container {
   height:50vh;
+  overflow: hidden;
 }
 .radio-group {
   padding:25rpx;
@@ -22,4 +23,18 @@
   padding: 0 20rpx 0;
   display: flex;
   justify-content: space-between;
+}
+.allday{
+  height:35rpx;
+  margin: -20rpx 50rpx 15rpx;
+}
+.day-text {
+  display: inline-block;
+  margin-left:20rpx;
+  margin-bottom:15rpx;
+  font-size:25rpx;
+  color:#a7a7a7;
+}
+.text-choose{
+  color:#07c160
 }

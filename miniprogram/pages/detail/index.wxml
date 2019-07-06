@@ -21,6 +21,9 @@
     </view>
   </view>
   <view class='one holder'>
+    <view class='one-name'>
+     Hitokoto
+    </view>
     <view class='bubble bubble-bottom'>
       <text class='one-message'>{{oneMessage.hitokoto}}</text>
     </view>
@@ -28,6 +31,9 @@
     <span class='line'></span>
     <text class='from-text'>{{oneMessage.from}}</text>
     <span class='line'></span>
+    </view>
+    <view class='copyRight'>
+    © 2019_阿星mir
     </view>
   </view>
 </view>

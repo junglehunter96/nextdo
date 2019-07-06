@@ -74,7 +74,7 @@
   line-height: 36rpx;
   text-align: left;
   border-radius: 25rpx;
-  margin: 0 50rpx 30rpx;
+  margin: 0 30rpx 30rpx;
 
   background-color: #60d8ce;
   height: 4em;
@@ -117,4 +117,16 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(#fcfcfc, #ececec);
+}
+.copyRight{
+  position: absolute;
+  bottom:25rpx;
+  right:25rpx;
+  color: #ccc;
+  font-size:23rpx;
+}
+.one-name {
+  font-size:26rpx;
+  color:#60d8ce;
+  margin-bottom:10rpx;
 }

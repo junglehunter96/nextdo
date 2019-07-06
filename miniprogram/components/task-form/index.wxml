@@ -1,40 +1,40 @@
-<!--components/task-form/index.wxml-->
+<!-- components/task-form/index.wxml -->
 <view class="form-container">
   <!-- 任务类型 -->
   <view class="type-container van-hairline--bottom">
     <radio-group class="radio-group" bindchange="radioChange">
       <label class="radio" wx:for="{{taskItems}}" wx:key="index">
-        <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+        <radio value="{{item.name}}" checked="{{item.checked}}" />
+        {{item.value}}
       </label>
     </radio-group>
   </view>
   <!-- 时间选择器 -->
   <view class="time-picker">
     <picker-view indicator-style="height: 50rpx;" style="width: 100%; height: 200rpx;" value="{{value}}" bindchange="bindChange">
-    <picker-view-column>
-      <view wx:for="{{days}}" style="line-height: 50rpx" wx:key="index">{{item}}</view>
-    </picker-view-column>
-    <picker-view-column>
-      <view wx:for="{{hours}}" style="line-height: 50rpx" wx:key="index">{{item}} 时</view>
-    </picker-view-column>
-    <picker-view-column>
-      <view wx:for="{{minutes}}" style="line-height: 50rpx" wx:key="index">{{item}} 分</view>
-    </picker-view-column>
-  </picker-view>
+      <picker-view-column>
+        <view wx:for="{{days}}" style="line-height: 50rpx" wx:key="index">{{item}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{hours}}" style="line-height: 50rpx" wx:key="index">{{item}} 时</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{minutes}}" style="line-height: 50rpx" wx:key="index">{{item}} 分</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+  <view class="allday">
+    <van-switch checked="{{ dayChecked }}" bind:change="onDayChange" size="35rpx" />
+    <text class="day-text">全天任务</text>
   </view>
   <!-- 输入任务 -->
   <view class="input-task">
     <van-cell-group>
-      <van-field
-        value="{{ task }}"
-        placeholder="请输入待完成任务"
-        border="{{ true }}"
-        bind:change="addTaskItem"
-      />
+      <van-field value="{{ task }}" placeholder="请输入待完成任务" border="{{ true }}" bind:change="addTaskItem" />
     </van-cell-group>
   </view>
   <view class="task-button">
-      <van-button type="default" size="normal" bindtap='cancel'>取消</van-button>
-      <van-button type="primary" size="normal" bindtap='ensure'>确认</van-button>
+    <van-button type="default" size="normal" bindtap='cancel'>取消</van-button>
+    <van-button type="primary" size="normal" bindtap='ensure'>确认</van-button>
   </view>
 </view>

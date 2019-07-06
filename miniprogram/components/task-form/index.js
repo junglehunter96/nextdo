@@ -30,6 +30,7 @@ Component({
       { name: 'c', value: '不紧急不重要'},
       { name: 'd', value: '重要不紧急'},
     ],
+      dayChecked: false,
       date: new Date().getDate(),
       days: ['今天','明天','后天'],
       day:0,
@@ -83,7 +84,8 @@ Component({
         day,
         type: this.data.taskType,
         timeArray: this.data.val,
-        taskText:this.data.taskText
+        taskText:this.data.taskText,
+        allDayChecked:this.data.dayChecked
       }
       
       if(taskLi.type&&taskLi.timeArray&&taskLi.taskText&&taskLi.day){
@@ -92,6 +94,11 @@ Component({
         Toast('请正确输入哟,亲~');
       }
       
+    },
+    onDayChange() {
+      this.setData({
+        dayChecked:!this.data.dayChecked
+      })
     }
     
   }

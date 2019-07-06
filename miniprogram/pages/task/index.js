@@ -47,14 +47,22 @@ Page({
     let minute = detail.timeArray[2]
     minute = minute > 9 ? minute : '0' + minute
     let finState = false
-    let timer = detail.timeArray[1] * 60 + detail.timeArray[2] + day * 3600
+    let allDayChecked = detail.allDayChecked
+    console.log(allDayChecked)
+    let timer
+    if (!allDayChecked) {
+      timer = detail.timeArray[1] * 60 + detail.timeArray[2] + day * 3600
+    } else {
+      timer = (day + 1) * 3600
+    }
     let taskItem = {
       taskText,
       day,
       hours,
       minute,
       finState,
-      timer
+      timer,
+      allDayChecked
     }
     let taskArr = [taskItem]
     const type = e.detail.type

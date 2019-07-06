@@ -8,12 +8,15 @@
     <text>紧急&不重要</text>
   </view>
   <scroll-view>
-    <view class="item" wx:for="{{taskArray}}" wx:key="{{index}}" data-index="{{index}}"
+      <view class="item" wx:for="{{taskArray}}" wx:key="{{index}}" data-index="{{index}}"
     data-state="{{item.finState}}" bindlongpress="remoteItemA" bindtap="opTask">
       <view class="task-text">{{item.taskText}}</view>
       <view class="finState" wx:if="{{!item.finState}}">
         <view class="time" wx:if="{{timer < item.timer}}">
+          <view wx:if="{{!item.allDayChecked}}">
           {{days[item.day - day]}}{{item.hours}}:{{item.minute}}
+          </view>
+          <view wx:if="{{item.allDayChecked}}">{{days[item.day - day]}}内</view>
         </view>
         <view class="time warning" wx:if="{{timer >= item.timer}}">任务过期</view>
       </view>
