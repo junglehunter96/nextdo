@@ -11,7 +11,7 @@ App({
     }
 
     this.globalData = {
-      userInfo:{}
+      userInfo:null
     }
   }
 })
