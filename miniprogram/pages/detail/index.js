@@ -26,7 +26,7 @@ Page({
     wx.getUserInfo({
       success: data => {
         //获取用户登录信息
-        if (!appInstance.globalData.userInfo.username) {
+        if (!appInstance.globalData.userInfo) {
           appInstance.globalData.userInfo = data
           wx.setStorageSync('userName', data.userInfo.nickName)
         }

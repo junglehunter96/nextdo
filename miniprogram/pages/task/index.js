@@ -1,7 +1,7 @@
 // miniprogram/pages/task/index.js
-import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
-import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog'
-
+import Toast from '../../miniprogram_npm/vant-weapp/toast/toast';
+import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog';
+const appInstance = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -232,6 +232,7 @@ Page({
     this.getTaskB()
     this.getTaskC()
     this.getTaskD()
+    this.getUserInfo()
   },
 
   /**
@@ -403,5 +404,16 @@ Page({
         console.log('储存失败')
       }
     }
-  }
+  },
+  getUserInfo() {
+    wx.getUserInfo({
+      success: data => {
+        //获取用户登录信息
+        if (!appInstance.globalData.userInfo) {
+          appInstance.globalData.userInfo = data
+          wx.setStorageSync('userName', data.userInfo.nickName)
+        }
+      }
+    })
+  },
 })
