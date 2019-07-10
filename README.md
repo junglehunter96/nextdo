@@ -24,6 +24,6 @@
 
 ![个人中心.png](https://i.loli.net/2019/07/06/5d20a5b02f0f812646.png)
 
-
+![四象任务.gif](https://i.loli.net/2019/07/06/5d20ac8e41d3497124.gif)
 
 
